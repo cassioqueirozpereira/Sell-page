@@ -31,6 +31,25 @@
             padding: 20px;
         }
 
+        /* AJUSTE ESPECÍFICO PARA CELULAR */
+        @media (max-width: 768px) {
+            header {
+                /* No celular, focamos no centro da imagem para não cortar o principal */
+                background-position: center center; 
+                height: 90vh; /* Diminuímos um pouco para o botão de agendar subir mais */
+            }
+
+            h1 {
+                font-size: 1.8rem; /* Diminuímos o título para não quebrar em 4 linhas */
+                line-height: 1.2;
+            }
+
+            p.subtitle {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+        }
+
         h1 { font-size: 3rem; color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
         p.subtitle { font-size: 1.2rem; max-width: 700px; color: var(--text-dim); margin-bottom: 30px; }
 
