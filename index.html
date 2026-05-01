@@ -469,7 +469,7 @@
         }
 
         /* Responsive */
-        @media (max-width: 600px) {
+        @media (max-width: 600px) { /* [FIX] Alterado de 900px para 600px no CSS. Antes, apenas alterar aqui mantinha o video travado porque o JavaScript (logo abaixo) também usava a regra dos 900px. */
             .mockup-section { grid-template-columns: 1fr; text-align: center; }
             .hero-overlay { background: linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, #0a0a0a 100%); }
             .hero-content { margin-top: 0; text-align: center; }
@@ -481,7 +481,7 @@
             .phone-mockup { transform: scale(0.9) rotateY(-15deg) rotateX(5deg); margin: 0 auto; }
             #scroll-video { display: none; }
             .hero-images { display: block; }
-            .hero-images img { 
+            .hero-images img {
                 object-fit: contain; 
                 object-position: top center; 
                 background-color: var(--bg-color);
@@ -643,7 +643,7 @@
         }
 
         function updateVideo() {
-            if (window.innerWidth > 900 && video && video.readyState >= 1 && video.duration) { // has metadata
+            if (window.innerWidth > 600 && video && video.readyState >= 1 && video.duration) { // [FIX] Alterado de 900 para 600 aqui. O problema estava aqui: o JavaScript exigia a tela > 900px para tocar o video no scroll.
                 // Calculate how much we scrolled inside the container
                 const startScroll = heroScrollContainer.offsetTop;
                 const scrollDistance = heroScrollContainer.offsetHeight - window.innerHeight;
@@ -673,7 +673,7 @@
         
         if (heroImages.length > 0) {
             setInterval(() => {
-                if (window.innerWidth <= 900) {
+                if (window.innerWidth <= 600) { // [FIX] Alterado de 900 para 600 para que as imagens mudem apenas em telas <= 600px
                     heroImages[currentImageIndex].classList.remove('active');
                     currentImageIndex = (currentImageIndex + 1) % heroImages.length;
                     heroImages[currentImageIndex].classList.add('active');
