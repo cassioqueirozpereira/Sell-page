@@ -1,0 +1,463 @@
+/* CSS Reset & Variables */
+:root {
+    --bg-color: #0a0a0a; /* Onyx */
+    --bg-elevated: #141414;
+    --bg-border: #222222;
+    --gold: #d4af37; /* Executive Gold */
+    --gold-hover: #b8962c;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --radius: 2px; /* Sharp geometry for premium feel */
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+a { text-decoration: none; }
+
+/* Typography & Utilities */
+.text-gold { color: var(--gold); }
+.text-center { text-align: center; }
+.reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); transition-duration: 0.8s; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+/* Custom Button */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 40px;
+    background-color: var(--gold);
+    color: var(--bg-color);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: var(--radius);
+    border: 1px solid var(--gold);
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.btn:hover::after {
+    left: 100%;
+}
+
+.btn-outline {
+    margin-top: 50px;
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--bg-border);
+}
+.btn-outline:hover {
+    border-color: var(--text-primary);
+    background-color: rgba(255,255,255,0.05);
+}
+
+/* Scroll Video Container */
+.hero-scroll-container {
+    height: 400vh; /* Controla o quão longo será o scroll do vídeo */
+    position: relative;
+}
+
+/* Hero Section (Massive Typography & Layers) */
+.hero {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    overflow: hidden;
+}
+
+#scroll-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-images {
+    display: none;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+}
+
+.hero-images img {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    pointer-events: none;
+}
+
+.hero-images img.active {
+    opacity: 1;
+}
+
+/* Gradient Overlay for Text Readability */
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to right, #0a0a0a 10%, rgba(10,10,10,0.8) 50%, rgba(10,10,10,0.4) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin-top: 10vh;
+}
+
+.hero-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 24px;
+    border-left: 2px solid var(--gold);
+    padding-left: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    line-height: 1.05;
+}
+
+.hero p {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    max-width: 600px;
+    font-weight: 300;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-note {
+    display: block;
+    margin-top: 24px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+/* Features Section */
+.features {
+    padding: 120px 5%;
+    background-color: var(--bg-elevated);
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid var(--bg-border);
+}
+
+.section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 80px;
+}
+
+.section-header h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 16px;
+}
+
+.section-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--bg-color);
+    padding: 50px 40px;
+    border-radius: var(--radius);
+    border: 1px solid var(--bg-border);
+    border-top: 3px solid transparent;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.card:hover::before {
+    transform: scaleX(1);
+}
+
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    color: var(--gold);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Mockup Section (CSS Art) */
+.mockup-section {
+    padding: 120px 5%;
+    background-color: var(--bg-color);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mockup-content h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 24px;
+}
+
+.mockup-content p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.mockup-container {
+    position: relative;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+}
+
+.phone-mockup {
+    width: 320px;
+    background: #ffffff; /* White background simulating Google Maps */
+    border-radius: 20px; /* Phones are rounded */
+    padding: 24px;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 8px #222222; /* Phone bezel */
+    transform: rotateY(-15deg) rotateX(5deg);
+    transition: var(--transition);
+}
+
+.phone-mockup:hover {
+    transform: rotateY(0) rotateX(0);
+}
+
+.mock-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.mock-logo { width: 40px; height: 40px; border-radius: 4px; object-fit: cover; }
+.mock-title-text { display: flex; flex-direction: column; justify-content: center; color: #202124; flex: 1; margin-left: 12px; text-align: left; }
+.mock-title-text strong { font-size: 1rem; font-family: 'Inter', sans-serif; line-height: 1.2; }
+.mock-title-text span { font-size: 0.8rem; color: #70757a; }
+
+.mock-rating {
+    color: #fbbc04;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.mock-rating span { color: #70757a; }
+
+.mock-action-btn {
+    background: #1a73e8;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.mock-action-btn svg { width: 18px; height: 18px; fill: white; }
+
+.mock-description {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    text-align: left;
+}
+.mock-desc-icon { width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; }
+.mock-desc-text { color: #3c4043; font-size: 0.85rem; line-height: 1.4; font-family: 'Inter', sans-serif; }
+
+/* Footer / Partnership */
+.footer {
+    padding: 100px 5%;
+    background: var(--bg-elevated);
+    text-align: center;
+    border-top: 1px solid var(--bg-border);
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer h2 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    margin-bottom: 24px;
+}
+
+.footer p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.copyright {
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid var(--bg-border);
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Floating WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25d366;
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    z-index: 100;
+    transition: var(--transition);
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-float svg {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+}
+
+/* Responsive */
+@media (max-width: 600px) { /* [FIX] Alterado de 900px para 600px no CSS. Antes, apenas alterar aqui mantinha o video travado porque o JavaScript (logo abaixo) também usava a regra dos 900px. */
+    .mockup-section { grid-template-columns: 1fr; text-align: center; }
+    .hero-overlay { background: linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, #0a0a0a 100%); }
+    .hero-content { margin-top: 0; text-align: center; }
+    .hero { align-items: flex-end; padding-bottom: 10vh; position: relative; }
+    .hero-scroll-container { height: 100vh; }
+    .hero-badge { border-left: none; padding-left: 0; }
+    .hero h1 { font-size: 2.8rem; }
+    .hero-buttons { justify-content: center; }
+    .phone-mockup { transform: scale(0.9) rotateY(-15deg) rotateX(5deg); margin: 0 auto; }
+    #scroll-video { display: none; }
+    .hero-images { display: block; }
+    .hero-images img {
+        object-fit: contain; 
+        object-position: top center; 
+        background-color: var(--bg-color);
+    }
+}
