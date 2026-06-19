@@ -5,6 +5,14 @@ const heroScrollContainer = document.querySelector('.hero-scroll-container');
 let targetTime = 0;
 let currentTime = 0;
 
+// Phone Mockup animation variables
+const phoneMockup = document.querySelector('.phone-mockup');
+const mockupContainer = document.querySelector('.mockup-container');
+let targetRotateY = -15;
+let targetRotateX = 5;
+let currentRotateY = -15;
+let currentRotateX = 5;
+
 // Force browser to load video for seeking
 if (video) {
     video.addEventListener('loadedmetadata', () => {
@@ -31,6 +39,32 @@ function updateVideo() {
             video.currentTime = currentTime;
         }
     }
+
+    // Mobile phone mockup logic
+    if (window.innerWidth <= 600 && phoneMockup && mockupContainer) {
+        const rect = mockupContainer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        let progress = (windowHeight * 0.85 - rect.top) / (windowHeight * 0.5);
+        progress = Math.max(0, Math.min(1, progress));
+        
+        targetRotateY = -15 + (15 * progress);
+        targetRotateX = 5 - (5 * progress);
+        
+        currentRotateY += (targetRotateY - currentRotateY) * 0.1;
+        currentRotateX += (targetRotateX - currentRotateX) * 0.1;
+        
+        phoneMockup.style.transition = 'none';
+        phoneMockup.style.transform = `scale(0.9) rotateY(${currentRotateY}deg) rotateX(${currentRotateX}deg)`;
+    } else if (phoneMockup) {
+        if (phoneMockup.style.transform !== '') {
+            phoneMockup.style.transition = '';
+            phoneMockup.style.transform = '';
+            currentRotateY = -15;
+            currentRotateX = 5;
+        }
+    }
+
     requestAnimationFrame(updateVideo);
 }
 
