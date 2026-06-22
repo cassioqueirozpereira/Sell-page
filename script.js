@@ -8,10 +8,10 @@ let currentTime = 0;
 // Phone Mockup animation variables
 const phoneMockup = document.querySelector('.phone-mockup');
 const mockupContainer = document.querySelector('.mockup-container');
-let targetRotateY = -15;
-let targetRotateX = 5;
-let currentRotateY = -15;
-let currentRotateX = 5;
+let targetRotateY = -30;
+let targetRotateX = 10;
+let currentRotateY = -30;
+let currentRotateX = 10;
 
 // Force browser to load video for seeking
 if (video) {
@@ -45,11 +45,11 @@ function updateVideo() {
         const rect = mockupContainer.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         
-        let progress = (windowHeight * 0.85 - rect.top) / (windowHeight * 0.5);
+        let progress = (windowHeight * 0.65 - rect.top) / (windowHeight * 0.5);
         progress = Math.max(0, Math.min(1, progress));
         
-        targetRotateY = -15 + (15 * progress);
-        targetRotateX = 5 - (5 * progress);
+        targetRotateY = -30 + (30 * progress);
+        targetRotateX = 10 - (10 * progress);
         
         currentRotateY += (targetRotateY - currentRotateY) * 0.1;
         currentRotateX += (targetRotateX - currentRotateX) * 0.1;
@@ -60,8 +60,8 @@ function updateVideo() {
         if (phoneMockup.style.transform !== '') {
             phoneMockup.style.transition = '';
             phoneMockup.style.transform = '';
-            currentRotateY = -15;
-            currentRotateX = 5;
+            currentRotateY = -30;
+            currentRotateX = 10;
         }
     }
 

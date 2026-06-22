@@ -325,7 +325,7 @@ a { text-decoration: none; }
     box-shadow: 
         0 25px 50px -12px rgba(0, 0, 0, 0.5),
         0 0 0 8px #222222; /* Phone bezel */
-    transform: rotateY(-15deg) rotateX(5deg);
+    transform: rotateY(-30deg) rotateX(10deg);
     transition: var(--transition);
 }
 
@@ -479,7 +479,7 @@ a { text-decoration: none; }
     .btn-outline { 
         margin-top: 10px; /* Remove excessive margin */
     }
-    .phone-mockup { transform: scale(0.9) rotateY(-15deg) rotateX(5deg); margin: 0 auto; }
+    .phone-mockup { transform: scale(0.9) rotateY(-30deg) rotateX(10deg); margin: 0 auto; }
     #scroll-video { display: none; }
     .hero-images { display: block; }
     .hero-images img {
