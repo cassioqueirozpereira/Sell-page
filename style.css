@@ -191,6 +191,50 @@ img {
     width: 100%;
 }
 
+/* Modern Instagram Nav Button */
+.nav-instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.insta-gradient-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    box-shadow: 0 0 8px #dc2743;
+    animation: instaPulse 2s infinite ease-in-out;
+}
+
+@keyframes instaPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+.nav-instagram-btn:hover {
+    color: #ffffff;
+    background: rgba(225, 48, 108, 0.12);
+    border-color: rgba(225, 48, 108, 0.45);
+    box-shadow: 0 4px 18px rgba(220, 39, 67, 0.25);
+    transform: translateY(-2px);
+}
+
+.nav-instagram-btn:hover svg {
+    color: #f77737;
+    filter: drop-shadow(0 0 6px rgba(247, 119, 55, 0.6));
+}
+
 .nav-cta-btn {
     display: inline-flex;
     align-items: center;
@@ -450,6 +494,70 @@ img {
     font-size: 0.82rem;
     color: var(--text-muted);
     letter-spacing: 0.3px;
+}
+
+/* Modern Instagram Hero Pill */
+.hero-social {
+    margin-top: 24px;
+}
+
+.hero-instagram-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px 10px 12px;
+    background: rgba(16, 23, 45, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-pill);
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    transition: var(--transition);
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.insta-live-ring {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(220, 39, 67, 0.45);
+    flex-shrink: 0;
+    transition: transform 0.4s ease;
+}
+
+.hero-insta-text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.hero-insta-arrow {
+    color: var(--text-muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+    margin-left: 4px;
+}
+
+.hero-instagram-pill:hover {
+    background: rgba(22, 32, 64, 0.85);
+    border-color: rgba(225, 48, 108, 0.5);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 39, 67, 0.25), 0 0 20px rgba(188, 24, 136, 0.15);
+}
+
+.hero-instagram-pill:hover .insta-live-ring {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.hero-instagram-pill:hover .hero-insta-arrow {
+    transform: translateX(4px);
+    color: #f77737;
 }
 
 /* ==========================================================================
@@ -877,7 +985,97 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
+    width: 100%;
+    max-width: 540px;
+}
+
+/* Modern Instagram Interactive Card Button */
+.btn-instagram-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    padding: 18px 24px;
+    background: rgba(16, 23, 45, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.btn-instagram-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(240, 148, 51, 0.12), rgba(220, 39, 67, 0.12), rgba(188, 24, 136, 0.12));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.insta-card-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(220, 39, 67, 0.45);
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.insta-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+}
+
+.insta-card-content strong {
+    font-size: 1rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.insta-card-content span {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.insta-card-arrow {
+    color: var(--text-muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.btn-instagram-card:hover {
+    border-color: rgba(225, 48, 108, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(220, 39, 67, 0.25), 0 0 25px rgba(188, 24, 136, 0.2);
+}
+
+.btn-instagram-card:hover::before {
+    opacity: 1;
+}
+
+.btn-instagram-card:hover .insta-card-badge {
+    transform: scale(1.08) rotate(5deg);
+}
+
+.btn-instagram-card:hover .insta-card-arrow {
+    transform: translateX(5px);
+    color: #f77737;
 }
 
 .footer-cta-sub {
@@ -1087,6 +1285,32 @@ img {
     .btn {
         width: 100%;
         padding: 14px 20px;
+    }
+
+    .hero-instagram-pill {
+        width: 100%;
+        justify-content: center;
+        padding: 8px 14px;
+        font-size: 0.78rem;
+    }
+
+    .btn-instagram-card {
+        padding: 14px 16px;
+        gap: 12px;
+    }
+
+    .insta-card-badge {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    .insta-card-content strong {
+        font-size: 0.9rem;
+    }
+
+    .insta-card-content span {
+        font-size: 0.75rem;
     }
 
     .trust-container {
