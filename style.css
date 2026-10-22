@@ -987,7 +987,13 @@ img {
     align-items: center;
     gap: 16px;
     width: 100%;
-    max-width: 540px;
+    max-width: 440px;
+}
+
+.footer-cta-box .btn-large {
+    width: 100%;
+    padding: 18px 24px;
+    white-space: nowrap;
 }
 
 /* Modern Instagram Interactive Card Button */
@@ -1285,6 +1291,7 @@ img {
     .btn {
         width: 100%;
         padding: 14px 20px;
+        white-space: normal;
     }
 
     .hero-instagram-pill {
