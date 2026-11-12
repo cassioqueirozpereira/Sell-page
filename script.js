@@ -138,3 +138,55 @@ if (navToggle && navMenu) {
         });
     });
 }
+
+// ==========================================================================
+// Lead Qualification / Diagnostic Form Logic
+// ==========================================================================
+const diagOptions = document.querySelectorAll('.diag-option');
+const diagSubmitBtn = document.getElementById('diag-submit-btn');
+
+if (diagOptions.length > 0 && diagSubmitBtn) {
+    const baseWhatsNumber = "5541988171218";
+
+    diagOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            diagOptions.forEach(opt => opt.classList.remove('active'));
+            option.classList.add('active');
+
+            const solutionName = option.getAttribute('data-solution');
+            const encodedMessage = encodeURIComponent(`Olá, Cássio! Fiz o diagnóstico na página e gostaria de avaliar a solução: *${solutionName}*.`);
+            diagSubmitBtn.href = `https://wa.me/${baseWhatsNumber}?text=${encodedMessage}`;
+        });
+    });
+}
+
+// ==========================================================================
+// Analytics / Event Tracking Helper (GA4 / Meta Pixel Ready)
+// ==========================================================================
+function trackLeadEvent(eventName, label) {
+    // Google Analytics 4
+    if (typeof gtag === 'function') {
+        gtag('event', eventName, {
+            'event_category': 'Engajamento',
+            'event_label': label
+        });
+    }
+
+    // Meta Pixel (Facebook)
+    if (typeof fbq === 'function') {
+        fbq('track', 'Contact', { content_name: label });
+    }
+}
+
+// Track WhatsApp and Demo Clicks
+document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        trackLeadEvent('whatsapp_click', btn.innerText.trim() || 'WhatsApp Lead');
+    });
+});
+
+document.querySelectorAll('.btn-cyan, .case-actions a').forEach(btn => {
+    btn.addEventListener('click', () => {
+        trackLeadEvent('demo_click', btn.innerText.trim() || 'Demo Click');
+    });
+});
