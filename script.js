@@ -146,16 +146,13 @@ const diagOptions = document.querySelectorAll('.diag-option');
 const diagSubmitBtn = document.getElementById('diag-submit-btn');
 
 if (diagOptions.length > 0 && diagSubmitBtn) {
-    const baseWhatsNumber = "5541988171218";
-
     diagOptions.forEach(option => {
         option.addEventListener('click', () => {
             diagOptions.forEach(opt => opt.classList.remove('active'));
             option.classList.add('active');
 
             const solutionName = option.getAttribute('data-solution');
-            const encodedMessage = encodeURIComponent(`Olá, Cássio! Fiz o diagnóstico na página e gostaria de avaliar a solução: *${solutionName}*.`);
-            diagSubmitBtn.href = `https://wa.me/${baseWhatsNumber}?text=${encodedMessage}`;
+            diagSubmitBtn.href = `obrigado.html?solucao=${encodeURIComponent(solutionName)}`;
         });
     });
 }

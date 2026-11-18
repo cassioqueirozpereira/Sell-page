@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Confirmado | Cassara Tech</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0B1020">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TCR8M7BQ');</script>
+    <!-- End Google Tag Manager -->
+
+    <style>
+        :root {
+            --bg-color: #0B1020;
+            --bg-card: rgba(16, 23, 45, 0.75);
+            --bg-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --accent-cyan: #00C2FF;
+            --accent-green: #10B981;
+            --gradient-btn: linear-gradient(135deg, #00C2FF 0%, #0D6EFD 50%, #7C3AED 100%);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glow */
+        .ambient-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 194, 255, 0.15) 0%, rgba(124, 58, 237, 0.1) 40%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .thank-you-card {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 194, 255, 0.25);
+            border-radius: var(--radius);
+            padding: 48px 36px;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 194, 255, 0.12);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .success-icon-wrapper {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.15);
+            border: 2px solid rgba(16, 185, 129, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--accent-green);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+            animation: pulseSuccess 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseSuccess {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        .highlight-text {
+            background: linear-gradient(135deg, #00C2FF 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .desc-text {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        /* Solution preview box */
+        .solution-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .solution-box strong {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        /* Countdown Progress */
+        .countdown-container {
+            margin-bottom: 28px;
+        }
+
+        .countdown-text {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .countdown-text span {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00C2FF, #10B981);
+            border-radius: 10px;
+            transition: width 3s linear;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 24px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCR8M7BQ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="ambient-glow"></div>
+
+    <div class="thank-you-card">
+        <div class="success-icon-wrapper">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+
+        <h1>Diagnóstico <span class="highlight-text">Confirmado!</span></h1>
+        
+        <p class="desc-text">
+            Obrigado pelo contato! Preparamos seu direcionamento personalizado e estamos transferindo você diretamente para o WhatsApp da <strong>Cassara Tech</strong>.
+        </p>
+
+        <div class="solution-box">
+            <span>Interesse selecionado:</span>
+            <strong id="selected-solution-text">Gestão & Vitrine Digital</strong>
+        </div>
+
+        <div class="countdown-container">
+            <p class="countdown-text">Redirecionando em <span id="countdown-num">3</span> segundos...</p>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <a href="#" id="direct-whatsapp-btn" class="btn-whatsapp">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+            </svg>
+            <span>Abrir WhatsApp Agora</span>
+        </a>
+
+        <div>
+            <a href="index.html" class="back-link">&larr; Voltar para a página inicial</a>
+        </div>
+    </div>
+
+    <script>
+        // Number and parameters
+        const baseWhatsNumber = "5541988171218";
+        const urlParams = new URLSearchParams(window.location.search);
+        const solucao = urlParams.get('solucao') || "Vitrine Digital + Gestão Financeira";
+
+        // Display selected solution
+        document.getElementById('selected-solution-text').textContent = solucao;
+
+        // Prepare WhatsApp URL
+        const encodedMessage = encodeURIComponent(`Olá, Cássio! Fiz o diagnóstico na página e gostaria de avaliar a solução: *${solucao}*.`);
+        const targetWhatsUrl = `https://wa.me/${baseWhatsNumber}?text=${encodedMessage}`;
+
+        const directBtn = document.getElementById('direct-whatsapp-btn');
+        directBtn.href = targetWhatsUrl;
+
+        // Progress bar trigger
+        setTimeout(() => {
+            document.getElementById('progress-fill').style.width = '100%';
+        }, 100);
+
+        // Countdown timer (3 seconds)
+        let secondsLeft = 3;
+        const countdownEl = document.getElementById('countdown-num');
+
+        const interval = setInterval(() => {
+            secondsLeft--;
+            if (secondsLeft > 0) {
+                countdownEl.textContent = secondsLeft;
+            } else {
+                countdownEl.textContent = "0";
+                clearInterval(interval);
+                window.location.href = targetWhatsUrl;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
